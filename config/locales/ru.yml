@@ -1,0 +1,16 @@
+ru:
+  date:
+    formats:
+      default: '%d %B %Y'
+      short: '%d %B'
+
+  time:
+    formats:
+      csv_date: '%d.%m.%Y'
+      csv_time: '%H:%M'
+
+  winner_count:
+    one: "%{count} раз"
+    few: "%{count} раза"
+    many: "%{count} раз"
+    other: "%{count} раз"

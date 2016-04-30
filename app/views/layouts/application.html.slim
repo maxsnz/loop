@@ -1,0 +1,15 @@
+doctype html
+html lang="ru-RU" 
+  head
+    meta charset="UTF-8"
+    link rel="icon" href="#{ image_path('favicon.ico') }"
+    title #{meta_tag 'og:title'}
+    = meta_tags 
+    = csrf_meta_tags 
+    = yield :head 
+    / = render("_/google_analytics") if Rails.env.production? 
+    / = render("_/yandex_metrica") if Rails.env.production? 
+
+  body
+    = yield 
+    / = render :partial => '_/sharing_includes' 

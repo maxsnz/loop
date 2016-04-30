@@ -1,0 +1,19 @@
+facebook:
+  id: 138198596570030
+  secret: 7031a77de59086c9064de44eb0624c36
+  options:
+    scope: 'email'
+    info_fields: 'name,email'
+
+vkontakte:
+  id: 5328505
+  secret: t9nNI2N7Jf0Ib26tP8TG
+  options:
+    scope: 'notify'
+
+instagram:
+  id: 1ed1c55fda204f009201e5bfdb126664
+  secret: 77012eea436a4f2a8ac80bf57867033f
+  keys:
+    - id
+    - secret

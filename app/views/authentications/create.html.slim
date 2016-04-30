@@ -1,0 +1,7 @@
+javascript:
+  var options = #{@message.to_json.inspect.html_safe}
+  window.opener.Auth.callbackPopupAuth(true, options);
+  window.close();
+
+.msg style='display:none;'
+  h3 Авторизация прошла успешно, если окно не закрылось, попробуйте авторизоваться еще раз.

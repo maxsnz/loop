@@ -1,0 +1,19 @@
+doctype html
+html lang="ru-RU" 
+  head
+    meta charset="UTF-8"
+    link rel="icon" href="#{ image_path('favicon.ico') }"
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    title #{meta_tag 'og:title'}
+    = meta_tags 
+    = csrf_meta_tags 
+    = yield :head 
+    = stylesheet_link_tag "main", media: "all"
+    = render("_/google_analytics") if Rails.env.production? 
+    = render("_/yandex_metrica") if Rails.env.production? 
+
+  body.main-page
+    = yield 
+    = javascript_include_tag 'main' 
+    = render :partial => '_/sharing_includes' 
+

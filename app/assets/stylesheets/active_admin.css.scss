@@ -1,0 +1,7 @@
+@import "active_admin/mixins";
+@import "active_admin/base";
+
+.col.col-body {
+  max-width: 230px;
+  word-wrap: break-word;
+}

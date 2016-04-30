@@ -1,0 +1,13 @@
+ru:
+  meta:
+    _defaults:
+      og:title: 'Looper loop!'
+      og:type: article
+      og:image: share.png
+      og:site_name: Loop
+      og:description: '#loop'
+    
+
+    # photos:
+    #   show:
+    #     og:description: Our cool description

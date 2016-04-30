@@ -1,0 +1,11 @@
+ru:
+  active_admin:
+    batch_actions:
+      labels:
+        refuse: Отказать
+        publish: Опубликовать
+    scopes:
+      all: Все
+      awaiting_moderation: На модерации
+      refused: Отказано
+      visible: Опубликованные

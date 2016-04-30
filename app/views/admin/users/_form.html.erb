@@ -1,0 +1,5 @@
+<%= simple_form_for [:admin, resource] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :email %>
+  <%= render "_/buttons", f: f %>
+<% end %>

@@ -1,0 +1,101 @@
+@import "compass/css3";
+
+
+@mixin setfontface($font) {
+  @font-face {
+    font-family: '#{$font}';
+    src: font-url('#{$font}/#{$font}.eot');
+    src: font-url('#{$font}/#{$font}.eot?#iefix') format('embedded-opentype'),
+         font-url('#{$font}/#{$font}.woff') format('woff'),
+         font-url('#{$font}/#{$font}.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal; 
+  }
+}
+
+@mixin prefixIt($name, $value) {
+  -o-#{$name}: #{$value};
+  -ms-#{$name}: #{$value};
+  -moz-#{$name}: #{$value};
+  -webkit-#{$name}: #{$value};
+  #{$name}: #{$value}; 
+}
+
+@mixin animation($keyframe, $time, $easing, $duration) {
+  @include prefixIt(animation, $keyframe $time $easing $duration);
+  @include prefixIt(animation-iteration-count, $duration);
+}
+
+@mixin media_height($size) {
+  @media only screen and (max-height: $size) { @content; }
+}
+
+@mixin media_width($size) {
+  @media only screen and (max-width: $size) { @content; }
+}
+
+@mixin userselect($property) {
+  -webkit-user-select: $property; 
+  -moz-user-select: $property;     
+  -ms-user-select: $property;     
+  user-select: $property;
+}
+
+
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content; 
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  } 
+}
+
+@include keyframes(spin) {
+  0% {@include transform(rotate(0deg));}
+  100% {@include transform(rotate(360deg));}
+}
+
+// @include keyframes(rotate) {
+//   0% {
+//     @include rotate(0deg);
+    
+//   }
+//   50% {
+//     @include rotate(-180deg);
+    
+//   }
+//   100% {
+//     @include rotate(-360deg);
+//   }
+// }
+
+// @include keyframes(play_timer) {
+//   100% { background-position: 0 -832px; }
+// }
+
+@mixin bgp ($x, $y) {
+  // background-position: #{$x}px #{$y}px;
+  @include transform(translate(#{$x}px, #{$y}px));
+}
+
+@mixin background-retina($normal, $retina, $contain: false) {
+    background-image: image-url($normal);
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+        background-image: image-url($retina);
+
+        @if $contain == true {
+            background-size: contain;
+        } @else {
+            background-size: (image-width($retina) / 2) (image-height($retina) / 2);
+        }
+    }
+}
