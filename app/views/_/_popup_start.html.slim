@@ -1,0 +1,14 @@
+.popup.popup_start
+  .popup-container 
+    .popup-overlay.ui-clickable data-controller="NavPopupCtrl" data-action="close" data-popup="start"
+    .popup-popup
+      .popup-left
+      .popup-right
+      .popup-top
+      .popup-inner
+        a href="#" class="where-is-auth-button" Авторизуйся
+        | , чтобы участвовать в конкурсе или 
+        a.start.ui-clickable href="#" data-controller="GameCtrl" data-action="start" играй на интерес
+        .buttons-container
+          a.button.auth-button.auth-button_vk data-provider="vk" href="#" VK
+          a.button.auth-button.auth-button_fb data-provider="fb" href="#" FB

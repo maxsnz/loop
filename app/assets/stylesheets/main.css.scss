@@ -3,6 +3,8 @@
 @import "_/mixins";
 @import url(https://fonts.googleapis.com/css?family=Exo+2:400,700,300&subset=latin,cyrillic);
 
+$blue: #213767;
+
 html, body {
   width: 100%;
   height: 100%;
@@ -97,10 +99,36 @@ html, body {
 }
 
 .main-scrollwheel {
-  background: image-url("main-scrollwheel.png");
-  width: 24px;
-  height: 35px;
+  // background: image-url("main-scrollwheel.png");
+  // width: 24px;
+  // height: 35px;
   margin: 45px auto 0;
+  height: 25px;
+  line-height: 26px;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  color: #fff;
+  padding: 3px 6px;
+  font-size: 36px;
+  display: inline-block;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  width: 8px;
+  text-align: center;
+  @include single-transition(width, 0.3s, ease);
+  cursor: pointer;
+  overflow: hidden;
+  &:before{
+    content: "'";
+  }
+}
+.screen_main:hover .main-scrollwheel {
+  width: 70px;
+  font-size: 18px; font-weight: normal;
+  text-decoration: none;
+  &:before{
+    content: "СТАРТ";
+  }
 }
 
 .main-copy_3 {
@@ -191,6 +219,67 @@ html, body {
   background-image: image-url("main-clouds.png");
   background-repeat: no-repeat;
 }
+
+.popup {  display: none;}
+.popup-container {
+  position: fixed; top:0; left:0; width: 100%; height: 100%;
+  // Needs latest Compass, add '@import "compass"' to your scss
+  // Permalink - use to edit and share this gradient:
+  // http://colorzilla.com/gradient-editor/#213465+0,1b99a8+100&0.43+0,0.43+100
+  @include filter-gradient(#213465, #1b99a8, vertical); // IE6-9
+  @include background-image(linear-gradient(top, rgba(33,52,101,0.43) 0%,rgba(27,153,168,0.43) 100%));
+}
+
+.popup-overlay {
+  position: absolute; top:0; left:0; width: 100%; height: 100%;
+  cursor: pointer;
+}
+
+.popup-popup {
+  width: 407px; height: 232px; background: #fff;
+  position: absolute; top:50%; left:50%;
+  margin: -116px 0 0 -203px;
+  border-radius:15px;
+  color:#373737;
+  text-align: center;
+}
+.popup-left {position: absolute; bottom:0; left:-43px; width: 201px; height: 65px; background:inline-image('base64/popup-left.png');}
+.popup-right {position: absolute; bottom:-34px; right:-53px; width: 112px; height: 104px; background:inline-image('base64/popup-right.png');}
+.popup-top {position: absolute; top:-31px; right:0px; width: 201px; height: 65px; background:inline-image('base64/popup-top.png');}
+
+
+.popup_start {
+  font-size:18px; line-height: 22px;
+  .popup-inner {
+    padding: 65px 50px 0;
+  }
+  a {color:$blue; text-decoration: underline;}
+  .buttons-container {padding-top: 20px;}
+  a.auth-button {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    width:30px;
+    line-height: 30px;
+    height: 30px;
+    text-align: center;
+    border:1px solid $blue;
+    margin:0 10px;
+    
+    &:hover {
+      color:#fff;
+      background:$blue;
+    }
+    &.auth-button_vk {}
+    &.auth-button_fb {}
+  }
+  .buttons-container.anonse a.auth-button {
+    &.auth-button_vk {@include animation(spin, 0.5s, ease-in-out, 1);}
+    &.auth-button_fb {@include animation(spin_reverse, 0.5s, ease-in-out, 1);}
+  }
+}
+
+
 
 .aim {
   width: 100%;

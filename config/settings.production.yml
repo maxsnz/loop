@@ -2,22 +2,14 @@ ga:
   id: UA-75081338-1
 
 facebook:
-  id: 1522511088050633
-  secret: ebe7dab07f70703384a5da2a6ea2a38c
-  access_token: 1089596984398781|qnjDGhN9FkD-MSOkbXZeNnQ8iF8
+  id: 936788093105150
+  secret: db39b3e4f615eddfe373fe6a1086e8ac
   options:
     scope: 'email'
     info_fields: 'name,email'
 
 vkontakte:
-  id: 5328511
-  secret: PvUWepPPjH8y4Xk7xyjP
+  id: 5444900
+  secret: KvpsLpKt48BDSXiv4rJb
   options:
     scope: 'notify'
-
-instagram:
-  id: 1ed1c55fda204f009201e5bfdb126664
-  secret: 77012eea436a4f2a8ac80bf57867033f
-  keys:
-    - id
-    - secret
