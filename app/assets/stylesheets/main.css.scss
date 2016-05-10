@@ -225,6 +225,7 @@ html, body {
     &:hover {color:#fff; background:$blue;}
     &.auth-button_vk {}
     &.auth-button_fb {}
+    &.auth-button_forcefb {width: auto; padding: 0 10px;}
   }
   .buttons-container.anonse a.auth-button {
     &.auth-button_vk {@include animation(spin, 0.5s, ease-in-out, 1);}

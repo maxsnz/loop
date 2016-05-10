@@ -43,6 +43,11 @@ class Player
       when 'vk'
         Authorize.authorize.Vk().then (obj)->
           sendAuth(obj)
+      when 'forcefb'
+        Player.setState('loading')
+        FB.login((login)->
+          console.log 'FB.login', login
+        )
 
     Player.setState 'anonymous' if params.action is 'back'
 

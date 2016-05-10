@@ -19,5 +19,7 @@
           p Ошибка авторизации
           p
             a.goback data-controller="AuthCtrl" data-action="back" href="#" попробовать еще раз
+        .player-state.stupidfb
+          a.button.auth-button.auth-button_forcefb.ui-clickable data-controller="AuthCtrl" data-action="forceauth" data-provider="fb" href="#" Авторизоваться в facebook
         .player-state.authorized
           a.start.ui-clickable href="#" data-controller="GameCtrl" data-action="start" старт!
