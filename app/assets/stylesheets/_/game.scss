@@ -1,0 +1,94 @@
+.state {
+  display: block;
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.state.state_pause {
+  background-image: image-url("pause.png");
+}
+
+// .game-background {
+//   position: absolute;
+//   width: 100%;
+//   height: 100%;
+//   background-color: #a6cbdb;
+//   background-position: 0 100%;
+//   background-size: cover;
+//   background-repeat: repeat-x;
+//   background-image: image-url("bg-winter.png");
+// }
+
+.game-clouds, .main-clouds {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.game-clouds {
+  // background-position: 0 100%;
+  // background-image: image-url("game-clouds.png");
+  // background-size: cover;
+  // background-repeat: repeat-x;
+  position: relative;
+  height:100%;
+  .cloud {
+    position: absolute;
+    &.cloud_1 {@include imgtobg64('clouds/1.png'); left:180px;}
+    &.cloud_2 {@include imgtobg64('clouds/2.png'); left:850px;}
+    &.cloud_3 {@include imgtobg64('clouds/3.png'); left:1030px;}
+    &.cloud_4 {@include imgtobg64('clouds/4.png'); left:1800px;}
+    &.cloud_5 {@include imgtobg64('clouds/5.png'); left:2080px;}
+    &.cloud_6 {@include imgtobg64('clouds/6.png'); left:2700px;}
+  }
+
+}
+
+
+.game {
+  width: 100%; height: 100%;
+  position: relative;
+}
+
+
+.bg-container {
+  left:-200vw; right:0;
+  top:0; bottom:0;
+  position: absolute;
+  opacity:0;
+  @include single-transition(opacity, 0.8s, ease);
+  &.active {opacity:1;}
+}
+.game-background {
+  width: 100%; height: 100%;
+}
+
+.game-bottom {
+  width: 100%; height: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.winter {
+  .game-background {background: image-url("bg/winter/bg.png") 50% 100% repeat;}
+  .game-bottom {background: image-url("bg/winter/bottom.png") 0 100% repeat-x;}
+}
+.forest {
+  .game-background {background: image-url("bg/forest/bg.png") 50% 100% repeat;}
+  .game-bottom {background: image-url("bg/forest/bottom.png") 0 100% repeat-x;}
+}
+.sea {
+  .game-background {background: image-url("bg/sea/bg.png") 50% 100% repeat;}
+  .game-bottom {}
+}
+.city {
+  .game-background {background: image-url("bg/city/bg.png") 50% 100% repeat;}
+  .game-bottom {}
+}

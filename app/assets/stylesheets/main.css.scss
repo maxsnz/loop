@@ -1,6 +1,8 @@
 @import "compass";
 @import "_/fonts";
 @import "_/mixins";
+@import "_/game";
+@import "_/debug";
 @import url(https://fonts.googleapis.com/css?family=Exo+2:400,700,300&subset=latin,cyrillic);
 
 $blue: #213767;
@@ -15,29 +17,24 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 
-.screen, .screen-inner {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+.everything-container { 
+  @include fullsize(fixed); 
+  box-sizing: border-box; 
+  padding: 16px; overflow:hidden;
 }
+.everything-inner {border-radius: 16px; overflow: hidden;  @include fullsize(relative);}
 
-.screen {
-  box-sizing: border-box;
-  padding: 16px;
-  position: absolute;
+.screen, .screen-inner {
+  @include fullsize(absolute);
 }
 
 .screen.hidden {
   opacity: 0;
   left: 100%;
+      pointer-events: none;
 }
 
-.screen-inner {
-  border-radius: 16px;
-  overflow: hidden;
-  position: relative;
-}
+.screen-inner {position: relative;}
 
 .screen_main .screen-inner {
   background: image-url("main-gradient.png");
@@ -173,45 +170,10 @@ html, body {
   background: image-url("logo.png");
 }
 
-.state {
-  display: block;
-  position: fixed;
-  top: 5px;
-  right: 5px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background-color: #fff;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-}
-
-.state.state_pause {
-  background-image: image-url("pause.png");
-}
-
-.game-background {
+.main-clouds {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #a6cbdb;
-  background-position: 0 100%;
-  background-size: cover;
-  background-repeat: repeat-x;
-  background-image: image-url("bg-winter.png");
-}
-
-.game-clouds, .main-clouds {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.game-clouds {
-  background-position: 0 100%;
-  background-image: image-url("game-clouds.png");
-  background-size: cover;
-  background-repeat: repeat-x;
 }
 
 .main-clouds {
@@ -221,18 +183,15 @@ html, body {
 }
 
 .popup {  display: none;}
-.popup-container {
-  position: fixed; top:0; left:0; width: 100%; height: 100%;
-  // Needs latest Compass, add '@import "compass"' to your scss
-  // Permalink - use to edit and share this gradient:
-  // http://colorzilla.com/gradient-editor/#213465+0,1b99a8+100&0.43+0,0.43+100
-  @include filter-gradient(#213465, #1b99a8, vertical); // IE6-9
-  @include background-image(linear-gradient(top, rgba(33,52,101,0.43) 0%,rgba(27,153,168,0.43) 100%));
-}
+.popup-container {@include fullsize(absolute);}
 
 .popup-overlay {
   position: absolute; top:0; left:0; width: 100%; height: 100%;
   cursor: pointer;
+  // http://colorzilla.com/gradient-editor/#213465+0,1b99a8+100&0.43+0,0.43+100
+  @include filter-gradient(#213465, #1b99a8, vertical); // IE6-9
+  @include background-image(linear-gradient(top, #213465 0%, #1b99a8 100%));
+  opacity:0.6;
 }
 
 .popup-popup {
@@ -250,9 +209,7 @@ html, body {
 
 .popup_start {
   font-size:18px; line-height: 22px;
-  .popup-inner {
-    padding: 65px 50px 0;
-  }
+  .popup-inner {padding: 65px 50px 0;}
   a {color:$blue; text-decoration: underline;}
   .buttons-container {padding-top: 20px;}
   a.auth-button {
@@ -265,11 +222,7 @@ html, body {
     text-align: center;
     border:1px solid $blue;
     margin:0 10px;
-    
-    &:hover {
-      color:#fff;
-      background:$blue;
-    }
+    &:hover {color:#fff; background:$blue;}
     &.auth-button_vk {}
     &.auth-button_fb {}
   }
@@ -277,35 +230,65 @@ html, body {
     &.auth-button_vk {@include animation(spin, 0.5s, ease-in-out, 1);}
     &.auth-button_fb {@include animation(spin_reverse, 0.5s, ease-in-out, 1);}
   }
+  .loader {width: 100px; height: 100px; margin: 0px auto; position: relative;}
 }
 
+.popup_finish {
+  font-size:18px; line-height: 22px;
+  .popup-inner {position: relative; text-align: center; height: 100%;}
 
-
-.aim {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  top: 0;
-  pointer-events: none;
+}
+.popup_finish-centered-content {
+  position: absolute; top:50%; left:50%;
+  @include transform(translate(-50%,-50%)); 
 }
 
-.aim-x, .aim-y {
-  background: #4affff;
-  position: fixed;
+.popup_finish-cloud {
+  color:$blue; font-size:18px; line-height: 22px; font-weight: bold;
+  @include imgtobg64('base64/popup_finish-cloud.png');
+  background-repeat: no-repeat;
+  margin-bottom: 20px;
+}
+.popup_finish-cloud-inner {    padding: 38px 0 0;}
+.popup_finish-cloud-bottom {font-size:32px;    line-height: 40px;}
+.popup_finish-plane-position {margin: 0px auto 25px; }
+.popup_finish-end { 
+  color:#fff; 
+  font-size:30px;
+  vertical-align: middle;
+  margin-left: 10px;
+  border-bottom: 2px dotted #fff;
+  padding-bottom: 5px;
+  text-decoration: none;
+}
+.popup_finish-plane {@include imgtobg64('base64/popup_finish-plane.png'); display: inline-block;vertical-align: middle;}
+.popup_finish-share-container {height: 20px; line-height: 20px; vertical-align: middle; margin-bottom: 45px;}
+.popup_finish-share {
+  display: inline-block; margin: 0 20px; cursor: pointer; opacity:0.9;
+  &:hover {opacity:1;}
+}
+.popup_finish-share_fb {@include imgtobg64('base64/share-fb.png'); }
+.popup_finish-share_vk {@include imgtobg64('base64/share-vk.png'); }
+.popup_finish-copy1 {color:#fff; font-size: 16px; line-height: 20px; font-weight: bold;}
+// .popup_finish-copy2  {position: absolute; bottom:0; }
+
+.popup_pause {
+  font-size:18px; line-height: 22px;
+  .popup-inner {padding: 40px 50px 0;}
 }
 
-.aim-x {
-  width: 100%;
-  height: 1px;
-  top: 50%;
-  left: 0;
+.popup_pause-blue {
+  color:$blue; font-weight: bold;
+  margin-bottom: 12px;
 }
 
-.aim-y {
-  width: 1px;
-  height: 100%;
-  top: 0;
-  left: 50%;
+.popup_pause-black {
+  color:#373737;
+  padding: 0 10px;
+  margin-bottom: 35px;
+}
+.popup_pause-ok {
+  font-size: 30px; font-weight: bold;
+  color:$blue;
+  cursor: pointer;
 }

@@ -16,7 +16,7 @@ class Api::ResultsController < Api::BaseController
     result = Result.with_state(Result::PENDING).joins(:player).where(players: {uid: extract_uid}, id: params[:id]).first
     player = Player.find_or_initialize_by(uid: extract_uid)
     if result
-      UpdateResult.call(result, params[:answers])
+      UpdateResult.call(result, params[:score])
       render_result(result)
       player = Player.all.where(uid:extract_uid)[0]
       update_player_score(player)
@@ -26,7 +26,7 @@ class Api::ResultsController < Api::BaseController
   end
 
   def update_player_score(player)
-    score = player.results.where(:state => Result::DONE).max(:score)
+    score = player.results.where(:state => Result::DONE).maximum(:score)
     player.score = score
     player.save
   end

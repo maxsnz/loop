@@ -93,7 +93,7 @@ ActiveAdmin.setup do |config|
   # roots for each namespace.
   #
   # Default:
-  config.root_to = 'attempts#index'
+  config.root_to = 'results#index'
 
 
   # == Admin Comments

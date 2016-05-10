@@ -1,0 +1,28 @@
+.aim {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  pointer-events: none;
+}
+
+.aim-x, .aim-y {
+  background: #4affff;
+  position: fixed;
+}
+
+.aim-x {
+  width: 100%;
+  height: 1px;
+  top: 50%;
+  left: 0;
+}
+
+.aim-y {
+  width: 1px;
+  height: 100%;
+  top: 0;
+  left: 50%;
+}

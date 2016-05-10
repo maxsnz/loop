@@ -1,3 +1,5 @@
+#= require authorize
+
 class Player
   data = {}
 
@@ -9,6 +11,7 @@ class Player
 
   sendAuth = (obj) ->
     # stateController('auth_loading')
+    console.log('sendAuth', obj)
     Player.data = obj
     $.ajax 
       type: 'POST'
@@ -21,12 +24,11 @@ class Player
         picture: Player.data.photo
       }
       success: (data) =>  
-        if data.limit > 0
-          Player.setState 'authorized'
-        else
-          Player.setState 'toomuch' 
+        console.log('sendAuth success', data)
+        Player.setState 'authorized'
         ee.emitEvent('PlayerCtrl', [ action:'authorized' ])
-        Player.updateScore()
+        Game.start()
+        # Player.updateScore()
       error: (xhr, textStatus, error) ->
         stateController('auth_error')
         console.log xhr.responseJSON.errors
@@ -45,21 +47,13 @@ class Player
     Player.setState 'anonymous' if params.action is 'back'
 
   @setState = (state) ->
+    console.log('player state is '+state)
     $('.player-state').hide()
     $('.player-state.'+state).show()
 
   @updateScore = () ->
-    $('.player-position').addClass('loading')
-    Player.getPlayer (data) =>
-      $('.player-pic img').attr('src', data.picture)
-      $('.player-score span').html(data.score)
-      $('.player-place span').html(data.place)
-      $('.player-name').html(data.name)
-      $('.player-position').removeClass('loading')
-      # console.log 'update score', data.limit
-      unless (data.limit > 0) 
-        $('.rotate-near-tryanotherone, .tryanotherone').remove()
-        Player.setState 'toomuch'
+    # Player.getPlayer (data) =>
+
 
   @getPlayer = (callback) ->
     $.ajax 
@@ -70,7 +64,7 @@ class Player
         return
       error: (xhr, textStatus, error) ->
         console.log xhr.responseJSON.errors
-        callback(player)
+        callback({error:error})
         return
     
 

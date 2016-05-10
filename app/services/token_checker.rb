@@ -18,7 +18,7 @@ class TokenChecker
   def valid?
     if vkontakte?
       sig, expire, mid, sid = token.split(',')
-      sig == Digest::MD5.hexdigest("expire=#{expire}mid=#{mid}secret=oauthsid=#{sid}#{Rails.configuration.vk_secret}") && mid == id
+      sig == Digest::MD5.hexdigest("expire=#{expire}mid=#{mid}secret=oauthsid=#{sid}#{Apps.vkontakte.secret}") && mid == id
     else
       begin
         user = Koala::Facebook::API.new(token).get_object("me")

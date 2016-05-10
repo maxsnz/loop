@@ -5,8 +5,22 @@ Loop::Application.routes.draw do
   get 'auth/failure', to: 'authentications#failure'
 
   namespace :api, defaults: { format: :json } do
-    # resources :photos, only: [:index, :show]
-    # resources :likes, only: [:create, :index]
+    resources :results, only: [:index, :create, :update] do
+      member do
+        post :publish
+      end
+      collection do
+        get :all
+      end
+    end
+    resources :players, only: [:index, :create, :update] do
+      member do
+        get :show
+      end
+      collection do
+        get :all
+      end
+    end
   end
 
   ActiveAdmin.routes(self)

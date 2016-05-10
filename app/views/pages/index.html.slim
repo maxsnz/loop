@@ -1,30 +1,54 @@
-.screen.screen_main
-  .screen-inner
-    .main-clouds
-    .main-column
-      .main-menu
-        a.main-menu-item href="#"  Правила акции
-        a.main-menu-item href="#"  Loop
-        a.main-menu-item href="#"  Регистрация
-      .main-slogan
-      .main-copy_1
-        | Пристегните ремни и приготовьтесь к полёту! <br />Прокручивайте страницу. Набирайте скорость <br />и накапливайте LOOP’ы.
-      .main-plane
-      .main-copy_2 
-        | Кто дальше всех улетит, тот получит <br />
-        strong бесплатные билеты от Brussels Airlines!
-      a.main-scrollwheel.ui-clickable href="#" data-controller="NavPopupCtrl" data-action="open" data-popup="start"
-      .main-copy_3 <sup>*</sup>Для участия в конкурсе надо зарегистрироваться в программе LOOP.BE
-.screen.screen_game.hidden
-  .screen-inner
-    .game-background
-    .game-clouds
-    #score.score 0 loop
-    #speed.speed speed: 0
-    .plane
-.state.state_pause
+.everything-container
+  .everything-inner
+    .screen.screen_main
+      .screen-inner
+        .main-clouds
+        .main-column
+          .main-menu
+            a.main-menu-item href="#"  Правила акции
+            a.main-menu-item href="#"  Loop
+            a.main-menu-item href="#"  Регистрация
+          .main-slogan
+          .main-copy_1
+            | Пристегните ремни и приготовьтесь к полёту! <br />Прокручивайте страницу. Набирайте скорость <br />и накапливайте LOOP’ы.
+          .main-plane
+          .main-copy_2 
+            | Кто дальше всех улетит, тот получит <br />
+            strong бесплатные билеты от Brussels Airlines!
+          a.main-scrollwheel.ui-clickable href="#" data-controller="NavPopupCtrl" data-action="open" data-popup="start"
+          .main-copy_3 <sup>*</sup>Для участия в конкурсе надо зарегистрироваться в программе LOOP.BE
+    .screen.screen_game.hidden
+      .screen-inner
+        .game
+          .bg-container.winter.active
+            .game-background
+            .game-bottom
+          .bg-container.forest
+            .game-background
+            .game-bottom
+          .bg-container.sea
+            .game-background
+          .bg-container.city
+            .game-background
+          .game-clouds
+            .cloud.cloud_1
+            .cloud.cloud_2
+            .cloud.cloud_3
+            .cloud.cloud_4
+            .cloud.cloud_5
+            .cloud.cloud_6
+          #score.score 
+            span 0
+            |  loop
+          / #speed.speed speed: 0
+          .plane
+    
+    
+    = render :partial =>  "_/popup_start"
+    = render :partial =>  "_/popup_pause"
+    = render :partial =>  "_/popup_finish"
+/ .state.state_pause
 a.logo href="#" target="_blank" 
-= render :partial =>  "_/popup_start"
-.aim
-  .aim-x
-  .aim-y
+/ .aim
+/   .aim-x
+/   .aim-y

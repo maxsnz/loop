@@ -11,8 +11,8 @@ ActiveAdmin.register Result do
 
     def scoped_collection
       # Result.all.where(state: 'correct')
-      Result.with_state(Result::DONE).includes :player
-      # Result.all
+      # Result.with_state(Result::DONE).includes :player
+      Result.all.includes :player
     end
   end
 
