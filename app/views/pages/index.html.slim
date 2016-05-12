@@ -14,7 +14,7 @@
           .main-plane
           .main-copy_2 
             | Кто дальше всех улетит, тот получит <br />
-            strong бесплатные билеты от Brussels Airlines!
+            strong бесплатный ужин в брассерии «Kriek» и самолётик Brussels Airlines!
           a.main-scrollwheel.ui-clickable href="#" data-controller="NavPopupCtrl" data-action="open" data-popup="start"
           .main-copy_3 <sup>*</sup>Для участия в конкурсе надо зарегистрироваться в программе LOOP.BE
     .screen.screen_game.hidden
@@ -48,7 +48,9 @@
     = render :partial =>  "_/popup_pause"
     = render :partial =>  "_/popup_finish"
 / .state.state_pause
-a.logo href="#" target="_blank" 
+.logo 
+  a.logo_left href="http://loop.be" target="_blank" 
+  a.logo_right href="https://www.brusselsairlines.com" target="_blank" 
 / .aim
 /   .aim-x
 /   .aim-y

@@ -168,6 +168,7 @@ html, body {
   width: 254px;
   height: 65px;
   background: image-url("logo.png");
+  a {display: block; width: 50%; float: left; height: 100%;}
 }
 
 .main-clouds {
@@ -270,7 +271,10 @@ html, body {
 }
 .popup_finish-share_fb {@include imgtobg64('base64/share-fb.png'); }
 .popup_finish-share_vk {@include imgtobg64('base64/share-vk.png'); }
-.popup_finish-copy1 {color:#fff; font-size: 16px; line-height: 20px; font-weight: bold;}
+.popup_finish-copy1 {
+  color:#fff; font-size: 16px; line-height: 20px; font-weight: bold;
+  a {color:#fff;}
+}
 // .popup_finish-copy2  {position: absolute; bottom:0; }
 
 .popup_pause {
@@ -292,4 +296,13 @@ html, body {
   font-size: 30px; font-weight: bold;
   color:$blue;
   cursor: pointer;
+}
+
+.popup-snoska  {
+  position: absolute;
+  bottom:10px;
+  width: 100%; text-align: center;
+  color:#fff;
+  font-size: 14px;
+  a {color:#fff; }
 }

@@ -22,11 +22,14 @@ class Game
   $score =  undefined
   bgs = ['winter', 'forest', 'sea', 'city']
   periods = [
-    {score:50, text:'И бесплатный билет Москва–Брюссель у вас в кармане!'}
-    {score:100, text:'И бесплатный билет Брюссель–Вена у вас в кармане!'}
-    {score:150, text:'И бесплатный билет Москва–Брюссель–Москва у вас в кармане!'}
-    {score:200, text:'И бесплатный билет Брюссель–Барселона у вас в кармане!'}
-    {score:9999999, text:'Выкупили авиакомпанию'}
+    {score:100, text:'100 LOOP’ов = 1€', description:''}
+    {score:500, text:'500 LOOP’ов Путешествуете с семьёй и друзьями.', description: 'И накапливайте LOOP’ы на одном счёте.'}
+    {score:1000, text:'У вас 1000 LOOP’ов!', description: 'Теперь вы можете оплатить топливный сбор!'}
+    {score:3500, text:'3500 LOOP’ов', description: 'Оплачивайте багаж LOOP’ами!'}
+    {score:5000, text:'5000 LOOP’ов', description: 'Недостаточно LOOP’ов на билет? Оплатите билет частично!'}
+    {score:9900, text:'9900 LOOP’ов на вашем счёте!', description: 'И бесплатный билет Москва–Брюссель–Москва у вас в кармане!'}
+    {score:13000, text:'13000 LOOP’ов Планируете путешествие на праздники?', description: 'Используйте LOOP’ы в любое время'}
+    {score:999999999, text:'Выкупили авиакомпанию', description:''}
   ]
 
 
@@ -95,8 +98,8 @@ class Game
     nextBg()
 
   pause = () ->
-    $('.popup_pause-blue span').text(periods[0].score)
-    $('.popup_pause-black').text(periods[0].text)
+    $('.popup_pause-blue').text(periods[0].text)
+    $('.popup_pause-black').text(periods[0].description)
     
     periods.splice(0,1)
     state = 'pause'
