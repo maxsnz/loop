@@ -134,6 +134,8 @@ class Game
           
 
   start = () ->
+    $('.whengamestarted').show()
+    $('.whengamenotstarted').hide()
     state = 'play'
     # initSpeedTester()
     ee.emitEvent('app_NavPopupCtrl', [ {action:'close', popup:"start"}, null ])
