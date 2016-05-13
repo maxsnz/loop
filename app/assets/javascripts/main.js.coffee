@@ -1,10 +1,12 @@
 #= require jquery2
+#= require lodash.compat.min
 #= require wheel-indicator.js
 #= require spin.min
 #= require EventEmitter.min
 #= require userinterface
 #= require navigation
 #= require player
+#= require rating
 #= require game
 
 
@@ -14,6 +16,7 @@ $ ->
   Navigation.init({currentScreen:'main'})
   # Navigation.openPopup('pause')
   Player.init()
+  Rating.init()
   Game.init()
 
   startIndicator = new WheelIndicator(

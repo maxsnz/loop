@@ -9,7 +9,7 @@ class Player
     ee.addListener('ui_AuthCtrl', @authController)
 
 
-  sendAuth = (obj) ->
+  sendAuth = (obj, forceStart) ->
     # stateController('auth_loading')
     console.log('sendAuth', obj)
     Player.data = obj
@@ -27,8 +27,8 @@ class Player
         console.log('sendAuth success', data)
         Player.setState 'authorized'
         ee.emitEvent('PlayerCtrl', [ action:'authorized' ])
-        Game.start()
-        # Player.updateScore()
+        Game.start() if forceStart
+        Player.updateScore()
       error: (xhr, textStatus, error) ->
         stateController('auth_error')
         console.log xhr.responseJSON.errors
@@ -36,13 +36,15 @@ class Player
 
   @authController = (params, targetElement) ->
     Player.setState 'loading'
+    forceStart = false
+    forceStart = true if params.start
     switch params.provider
       when 'fb'
         Authorize.authorize.Fb().then (obj)->
-          sendAuth(obj)
+          sendAuth(obj, forceStart)
       when 'vk'
         Authorize.authorize.Vk().then (obj)->
-          sendAuth(obj)
+          sendAuth(obj, forceStart)
       when 'forcefb'
         Player.setState('loading')
         FB.login((login)->
@@ -57,7 +59,7 @@ class Player
     $('.player-state.'+state).show()
 
   @updateScore = () ->
-    # Player.getPlayer (data) =>
+    Player.getPlayer (data) =>
 
 
   @getPlayer = (callback) ->
@@ -71,6 +73,14 @@ class Player
         console.log xhr.responseJSON.errors
         callback({error:error})
         return
-    
+
+  @updateScore = () ->
+    $('.player-position').addClass('loading')
+    Player.getPlayer (data) =>
+      $('.player-pic img').attr('src', data.picture)
+      $('.player-score span').html(data.score)
+      $('.player-place span').html(data.place)
+      $('.player-name').html(data.name)
+      $('.player-position').removeClass('loading')
 
 window.Player = Player

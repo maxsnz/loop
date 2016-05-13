@@ -10,9 +10,9 @@ ActiveAdmin.register Result do
   controller do
 
     def scoped_collection
-      # Result.all.where(state: 'correct')
-      # Result.with_state(Result::DONE).includes :player
-      Result.all.includes :player
+      # Result.all.where(state: 'done')
+      Result.with_state(Result::DONE).includes :player
+      # Result.all.includes :player
     end
   end
 

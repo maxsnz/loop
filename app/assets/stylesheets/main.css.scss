@@ -1,13 +1,15 @@
 @import "compass";
+@import "_/vars";
 @import "_/fonts";
 @import "_/mixins";
 @import "_/screen_main";
 @import "_/screen_game";
 @import "_/screen_prizes";
+@import "_/screen_result";
 @import "_/debug";
 @import url(https://fonts.googleapis.com/css?family=Exo+2:400,700,300&subset=latin,cyrillic);
 
-$blue: #213767;
+
 
 html, body {
   width: 100%;
@@ -15,7 +17,7 @@ html, body {
   margin: 0; 
   padding: 0;
   overflow: hidden;
-  font-family: 'Exo 2', sans-serif;
+  font-family: $font, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -51,6 +53,12 @@ html, body {
 
 .screen-inner {position: relative;}
 
+.screen-plane {
+  background: image-url("main-plane.png");
+  width: 310px;
+  height: 62px;
+  margin: 30px auto 0;
+}
 
 .nav-menu {
   position: absolute;
@@ -72,7 +80,7 @@ html, body {
 }
 
 
-
+.clearfix {clear:both;}
 
 .logo {
   display: block;
@@ -85,8 +93,27 @@ html, body {
   a {display: block; width: 50%; float: left; height: 100%;}
 }
 
-
-
+.auth-container {
+  a.auth-button {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    width:30px;
+    line-height: 30px;
+    height: 30px;
+    text-align: center;
+    border:1px solid $blue;
+    margin:0 10px;
+    &:hover {color:#fff; background:$blue;}
+    &.auth-button_vk {}
+    &.auth-button_fb {}
+    &.auth-button_forcefb {width: auto; padding: 0 10px;}
+  }
+  &.anonse a.auth-button {
+    &.auth-button_vk {@include animation(spin, 0.5s, ease-in-out, 1);}
+    &.auth-button_fb {@include animation(spin_reverse, 0.5s, ease-in-out, 1);}
+  }
+}
 
 .popup {  display: none;}
 .popup-container {@include fullsize(absolute);}
@@ -115,28 +142,9 @@ html, body {
 
 .popup_start {
   font-size:18px; line-height: 22px;
+  .buttons-container {padding-top: 20px;}
   .popup-inner {padding: 65px 50px 0;}
   a {color:$blue; text-decoration: underline;}
-  .buttons-container {padding-top: 20px;}
-  a.auth-button {
-    display: inline-block;
-    position: relative;
-    text-decoration: none;
-    width:30px;
-    line-height: 30px;
-    height: 30px;
-    text-align: center;
-    border:1px solid $blue;
-    margin:0 10px;
-    &:hover {color:#fff; background:$blue;}
-    &.auth-button_vk {}
-    &.auth-button_fb {}
-    &.auth-button_forcefb {width: auto; padding: 0 10px;}
-  }
-  .buttons-container.anonse a.auth-button {
-    &.auth-button_vk {@include animation(spin, 0.5s, ease-in-out, 1);}
-    &.auth-button_fb {@include animation(spin_reverse, 0.5s, ease-in-out, 1);}
-  }
   .loader {width: 100px; height: 100px; margin: 0px auto; position: relative;}
 }
 

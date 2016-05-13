@@ -24,5 +24,9 @@ class ResultDecorator < Draper::Decorator
   def created_at
     model.created_at.strftime("%d.%m.%Y  %H:%M ")
   end
+
+  def state
+    model.state
+  end
   
 end

@@ -1,4 +1,29 @@
 .screen.screen_rating.hidden
   .screen-inner
     .screen-clouds
-    h1 рейтинг
+    .player
+      .player-state.anonymous
+        .auth-position
+          h5 Уже участвовал? <br>авторизируйся
+          .buttons-container.auth-container
+            a.button.auth-button.auth-button_fb.ui-clickable data-controller="AuthCtrl" data-action="auth" data-provider="fb" href="#" FB
+            a.button.auth-button.auth-button_vk.ui-clickable data-controller="AuthCtrl" data-action="auth" data-provider="vk" href="#" VK
+
+      .player-state.loading
+        .loader.auth-player-loader
+
+      .player-state.authorized
+        .player-left
+          .pic.player-pic
+            img src=""
+          .player-name
+        .player-right
+          .player-score Баллы <span>0</span>
+          .player-place Место <span>0</span>
+        .clearfix
+    .screen-plane
+    .rating-container
+      ol.left
+      ol.right start="6"
+
+    .bottom-snoska <sup>*</sup>Для участия в конкурсе надо зарегистрироваться в программе LOOP.BE
