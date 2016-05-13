@@ -33,7 +33,7 @@ class Navigation
     callback() if typeof callback is "function"
 
   popupContoller = (params, targetElement) =>
-    console.log params
+    # console.log params
     @openPopup(params.popup) if params.action is 'open'
     @closePopup(params.popup) if params.action is 'close'
 

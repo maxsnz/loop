@@ -113,7 +113,7 @@ class Game
     Navigation.openPopup('pause')
 
   timeout = () ->
-    console.log('timeout')
+    # console.log('timeout')
     Navigation.openPopup('finish')
     $share.attr('data-url', 'http://www.piter-flanders.ru/result?l='+score)
 
@@ -179,10 +179,10 @@ class Game
         }
         success: (data) =>
           Player.data.attempt_id = data.id
-          console.log 'Player.data.attempt_id', Player.data.attempt_id
+          # console.log 'Player.data.attempt_id', Player.data.attempt_id
 
   gameController = (params, targetElement) =>
-    console.log 'gameController', params
+    # console.log 'gameController', params
     start() if params.action is 'start'
     pause() if params.action is 'pause'
     timeout() if params.action is 'timeout'

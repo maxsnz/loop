@@ -85,19 +85,19 @@ html, body {
 .share-board {
   position: absolute;
   top:40px;
-  left:10px;
+  right:10px;
   .like-container {overflow:hidden; width:78px; height:21px;}
   .like-button  {
-    // display: inline-block; 
-    display: block;
+    display: inline-block; 
+    // display: block;
     height:26px; 
     line-height: 26px; 
     margin: 0 3px 5px;
     vertical-align: top;
   }
   .like-fb { 
-    width: 150px; padding-right: 0px;
-    .like-container {width:140px;}
+    width: 125px; padding-right: 0px;
+    .like-container {width:120px;}
   }
   .fb-like {    top: -5px}
   .like-tw a {font-size:0;}
@@ -263,3 +263,8 @@ html, body {
   .main-copy_2 {font-size: 14px; line-height: 17px;}
   .main-scrollwheel {margin: 15px auto 0;}
 }
+
+@media only screen and (max-width: 1100px) {
+  .share-board .like-button {display: block;}
+}
+

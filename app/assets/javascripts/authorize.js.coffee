@@ -5,7 +5,7 @@ class Authorize
 
 
   getFbLoginStatus = ->
-    console.log 'getFbLoginStatus'
+    # console.log 'getFbLoginStatus'
     deferred = $.Deferred()
     FB.getLoginStatus (status)->
       
@@ -13,12 +13,12 @@ class Authorize
         deferred.resolve status
         return
       else
-        console.log 'FB.getLoginStatus (not connected)', status
+        # console.log 'FB.getLoginStatus (not connected)', status
         stupidFbTimeout = setTimeout (->
           Player.setState('stupidfb')
         ), 1000
         FB.login((login)->
-          console.log 'FB.login', login
+          # console.log 'FB.login', login
           clearTimeout(stupidFbTimeout)
           if login.authResponse
             deferred.resolve login
@@ -32,7 +32,7 @@ class Authorize
 
 
   getFbUserInfo = ->
-    console.log 'getFbUserInfo'
+    # console.log 'getFbUserInfo'
     deferred = $.Deferred()
     FB.api '/me', (me)->
       deferred.resolve me
@@ -41,13 +41,13 @@ class Authorize
 
 
   @authorize.Fb = ->
-    console.log '@authorize.Fb'
+    # console.log '@authorize.Fb'
     deferred = $.Deferred()
     _user = {}
     _user.provider = 'fb'
 
     getFbLoginStatus().then((status)->
-      console.log 'getFbLoginStatus().then'
+      # console.log 'getFbLoginStatus().then'
       _user.token = status.authResponse.accessToken
       return getFbUserInfo()
     (error)->
@@ -62,7 +62,7 @@ class Authorize
         if user.email?
           _user.email = user.email
         deferred.resolve _user
-        # console.log user, _user
+        console.log user, _user
         return
 
     return deferred.promise()

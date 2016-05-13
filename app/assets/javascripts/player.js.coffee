@@ -11,7 +11,7 @@ class Player
 
   sendAuth = (obj, forceStart) ->
     # stateController('auth_loading')
-    console.log('sendAuth', obj)
+    # console.log('sendAuth', obj)
     Player.data = obj
     $.ajax 
       type: 'POST'
@@ -24,7 +24,7 @@ class Player
         picture: Player.data.photo
       }
       success: (data) =>  
-        console.log('sendAuth success', data)
+        # console.log('sendAuth success', data)
         Player.setState 'authorized'
         ee.emitEvent('PlayerCtrl', [ action:'authorized' ])
         Game.start() if forceStart
@@ -48,13 +48,13 @@ class Player
       when 'forcefb'
         Player.setState('loading')
         FB.login((login)->
-          console.log 'FB.login', login
+          # console.log 'FB.login', login
         )
 
     Player.setState 'anonymous' if params.action is 'back'
 
   @setState = (state) ->
-    console.log('player state is '+state)
+    # console.log('player state is '+state)
     $('.player-state').hide()
     $('.player-state.'+state).show()
 
