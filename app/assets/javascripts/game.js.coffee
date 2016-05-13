@@ -81,7 +81,7 @@ class Game
       # $clouds.css('background-position', cp+'px 100%')
       # $speed.text('speed: '+currentV)
       unless old_cloudp == cloudp
-        console.log cloudp
+        # console.log cloudp
         $clouds.find('.cloud').each ->
           $(@).css('transform', 'translateX('+cloudp+'px)')
       $score.text(Math.round(score)) if prev_score != score
@@ -105,7 +105,7 @@ class Game
   pause = () ->
     $('.popup_pause-blue').text(periods[0].text)
     $('.popup_pause-black').text(periods[0].description)
-    
+      
     periods.splice(0,1)
     state = 'pause'
     Navigation.openPopup('pause')
@@ -176,20 +176,25 @@ class Game
           console.log 'Player.data.attempt_id', Player.data.attempt_id
 
   gameController = (params, targetElement) =>
-    console.log params
+    console.log 'gameController', params
     start() if params.action is 'start'
     pause() if params.action is 'pause'
     timeout() if params.action is 'timeout'
     play() if params.action is 'play'
     save() if params.action is 'save'
-    if params.action is 'return'
-      unless state is 'initial'
-        Navigation.changeScreen('game')
-        play() if state is 'play'
-        timeout() if state is 'timeout'
-        pause() if state is 'pause'
-      else
-        Navigation.changeScreen('main')
+    # if params.action is 'return'
+    #   unless state is 'initial'
+    #     Navigation.changeScreen('game')
+    #     play() if state is 'play'
+    #     timeout() if state is 'timeout'
+    #     pause() if state is 'pause'
+    #   else
+    #     Navigation.changeScreen('main')
+    # if params.action is 'changeScreen'
+    #   if params.screen is 'game'
+    #     gameScreenIsActive = true 
+    #   else
+    #     gameScreenIsActive = false 
 
 
   @init = () ->

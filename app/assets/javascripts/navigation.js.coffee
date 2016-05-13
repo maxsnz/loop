@@ -5,7 +5,8 @@ class Navigation
     $('.screen_'+newScreen).removeClass('hidden')
     $('.menu-item').removeClass('active disabled')
     $('.menu-item[data-screen="'+newScreen+'"]').addClass('active disabled')
-    $('.popup').fadeOut()
+    # $('.popup').fadeOut()
+    # ee.emitEvent('ui_GameCtrl', [ {action:'changeScreen', screen:newScreen}, null ])
 
 
   screenController = (params, targetElement) =>
