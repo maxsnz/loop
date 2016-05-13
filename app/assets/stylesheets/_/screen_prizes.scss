@@ -1,0 +1,18 @@
+.screen_prizes {
+  
+}
+.prizes-columns {padding-top: 10%; width: 855px; margin:0px auto; text-align: center; color:#fff; height: 160px;}
+.prize-column {width: 205px; float:left; margin: 0 40px; }
+.prize-pic {margin:0px auto; font-size:36px; line-height:77px; font-weight: bold; opacity:0.5;}
+.prizes-pic_1 {@include imgtobg64('base64/pize_1.png');}
+.prizes-pic_2 {@include imgtobg64('base64/pize_2.png');}
+.prizes-pic_3 {@include imgtobg64('base64/pize_3.png');}
+.prize-description {margin-top: 18px; font-size:14px;}
+.prizes-line {clear:left; background:inline-image('base64/line.png') 0 0 repeat; height:2px; width: 310px; margin: 100px auto 35px;}
+
+.prizes-sponsor {width: 780px; text-align:left; color:#fff; margin: 0 auto;}
+.prizes-sponsor-left {width: 200px; float:left;}
+.prizes-sponsor-left-cloud {@include imgtobg64('base64/cloud-prizes.png'); margin-bottom: 20px;}
+.prizes-sponsor-left-text {padding-left: 20px;}
+.prizes-sponsor-right {width: 576px; float: left;}
+.prizes-sponsor-right-inner {}

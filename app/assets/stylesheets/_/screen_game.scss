@@ -92,3 +92,47 @@
   .game-background {background: image-url("bg/city/bg.png") 50% 100% repeat;}
   .game-bottom {}
 }
+
+
+.screen_game {
+  .plane {
+    width: 124px; height: 113px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -57px 0 0 -62px;
+    // background: image-url("game-plane.png");
+    .plane-inner {position: relative; width: 124px;height: 113px;}
+    .plane-pic {
+      position: absolute; top:0; left:0;
+      @include imgtobg64('base64/plane-white.png');
+      @include transform(scale(0.76) translate(14px, 21px));
+      @include single-transition(transform, 0.7s, ease);
+    }
+    .plane-shadow {
+      position: absolute; bottom:0; right:0;
+      @include imgtobg64('base64/plane-shadow.png');
+      @include transform(scale(0.76) translate(-13px, -14px));
+      @include single-transition(transform, 1.2s, ease);
+    }
+    &.takeoff {
+      .plane-pic, .plane-shadow {@include transform(scale(1) translate(0px, 0px));}
+    }
+  }
+ 
+  .score {
+    position: fixed;
+    right: 90px;
+    top: 20px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+  .speed {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    color: red;
+  }
+}

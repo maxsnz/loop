@@ -1,0 +1,97 @@
+
+.screen_main {
+  .screen-inner {
+    background: image-url("main-gradient.png");
+    background-repeat: repeat-x;
+    background-position: 50% 50%;
+  }
+  .screen-clouds {
+    background-image: image-url("main-clouds.png");
+  }
+}
+
+
+.main-column {
+  position: absolute;
+  top: 17%;
+  left: 50%;
+  width: 500px;
+  margin-left: -250px;
+  text-align: center;
+  color: #fff;
+  height: 100%;
+}
+
+
+
+.main-slogan {
+  background: image-url("main-slogan.png");
+  width: 364px;
+  height: 131px;
+  margin: 0 auto 0;
+}
+
+.main-copy_1 {
+  font-size: 16px;
+  line-height: 20px;
+  margin-top: 15px;
+}
+
+.main-plane {
+  background: image-url("main-plane.png");
+  width: 310px;
+  height: 62px;
+  margin: 30px auto 0;
+}
+
+.main-copy_2 {
+  margin-top: 15px;
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: liter;
+}
+
+.main-copy_2 strong {
+  font-weight: bold;
+}
+
+.main-scrollwheel {
+  // background: image-url("main-scrollwheel.png");
+  // width: 24px;
+  // height: 35px;
+  margin: 45px auto 0;
+  height: 25px;
+  line-height: 26px;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  color: #fff;
+  padding: 3px 6px;
+  font-size: 36px;
+  display: inline-block;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  width: 8px;
+  text-align: center;
+  @include single-transition(width, 0.3s, ease);
+  cursor: pointer;
+  overflow: hidden;
+  &:before{
+    content: "'";
+  }
+}
+.screen_main:hover .main-scrollwheel {
+  width: 70px;
+  font-size: 18px; font-weight: normal;
+  text-decoration: none;
+  &:before{
+    content: "СТАРТ";
+  }
+}
+
+.main-copy_3 {
+  font-size: 14px;
+  position: absolute;
+  bottom: 30px;
+}
+
+

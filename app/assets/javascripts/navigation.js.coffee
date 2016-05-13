@@ -3,8 +3,9 @@ class Navigation
   goScreen = (currentScreen, newScreen) ->
     $('.screen_'+currentScreen).addClass('hidden')
     $('.screen_'+newScreen).removeClass('hidden')
-    # $('.menu-item').removeClass('active')
-    # $('.menu-item[data-screen="'+newScreen+'"]').addClass('active')
+    $('.menu-item').removeClass('active disabled')
+    $('.menu-item[data-screen="'+newScreen+'"]').addClass('active disabled')
+    $('.popup').fadeOut()
 
 
   screenController = (params, targetElement) =>

@@ -20,6 +20,7 @@ class Game
   $clouds = undefined
   $speed =  undefined
   $score =  undefined
+  $plane =  undefined
   bgs = ['winter', 'forest', 'sea', 'city']
   periods = [
     {score:100, text:'100 LOOP’ов = 1€', description:''}
@@ -87,6 +88,10 @@ class Game
       prev_score = score
       if score >= periods[0].score
         pause()
+      if currentV is 0
+        $plane.removeClass('takeoff')
+      else
+        $plane.addClass('takeoff')
 
   play = () ->
     state = 'play'  
@@ -177,12 +182,22 @@ class Game
     timeout() if params.action is 'timeout'
     play() if params.action is 'play'
     save() if params.action is 'save'
+    if params.action is 'return'
+      unless state is 'initial'
+        Navigation.changeScreen('game')
+        play() if state is 'play'
+        timeout() if state is 'timeout'
+        pause() if state is 'pause'
+      else
+        Navigation.changeScreen('main')
+
 
   @init = () ->
     ee.addListener('ui_GameCtrl', gameController)
     $bg = $('.bg-container')
     $clouds = $('.game-clouds')
     $speed = $('#speed')
+    $plane = $('.plane')
     $score = $('#score span, .popup_finish-cloud-bottom span')
     windowWidth = $(window).width()
     $clouds.find('.cloud').each ->
