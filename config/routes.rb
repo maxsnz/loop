@@ -3,6 +3,7 @@ Loop::Application.routes.draw do
   root "pages#index"
   get 'auth/:provider/callback', to: 'authentications#create'
   get 'auth/failure', to: 'authentications#failure'
+  get 'result', to: "pages#result"
 
   namespace :api, defaults: { format: :json } do
     resources :results, only: [:index, :create, :update] do

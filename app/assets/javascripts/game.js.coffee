@@ -16,11 +16,13 @@ class Game
   config = {
     t:10
   }
-  $bg =     undefined
-  $clouds = undefined
+  $bg    =  undefined
+  $clouds=  undefined
   $speed =  undefined
   $score =  undefined
   $plane =  undefined
+  $wheel =  undefined
+  $share =  undefined
   bgs = ['winter', 'forest', 'sea', 'city']
   periods = [
     {score:100, text:'100 LOOP’ов = 1€', description:''}
@@ -113,6 +115,7 @@ class Game
   timeout = () ->
     console.log('timeout')
     Navigation.openPopup('finish')
+    $share.attr('data-url', 'http://www.piter-flanders.ru/result?l='+score)
 
   save = () ->
     $(".popup_finish-end").hide()
@@ -154,6 +157,7 @@ class Game
           arrScrolls.shift() if arrScrolls.length > 9
           arrScrolls.push(time)
           score = score + 2
+          $wheel.hide()
 
         return
     )
@@ -205,7 +209,9 @@ class Game
     $clouds = $('.game-clouds')
     $speed = $('#speed')
     $plane = $('.plane')
+    $wheel = $('.game-scrollwheel')
     $score = $('#score span, .popup_finish-cloud-bottom span')
+    $share = $('.popup_finish-share')
     windowWidth = $(window).width()
     $clouds.find('.cloud').each ->
       p = Math.floor(Math.random() * (80 - 5 + 1)) + 5

@@ -17,7 +17,9 @@ class PagesController < ApplicationController
     render(:layout => "layouts/main")
   end
 
-
+  def result
+    render(:layout => "layouts/result")
+  end
 
 
 

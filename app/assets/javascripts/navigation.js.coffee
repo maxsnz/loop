@@ -37,18 +37,18 @@ class Navigation
     @openPopup(params.popup) if params.action is 'open'
     @closePopup(params.popup) if params.action is 'close'
 
-  # shareController = (params, targetElement) ->
-  #   url = 'http://specials.lookatme.ru/theartistisyou'
-  #   url = params.url if params.url
-  #   if params.provider is 'fb'
-  #     newWin = window.open("https://www.facebook.com/sharer/sharer.php?u="+url,"share","width=555,height=420,resizable=yes,scrollbars=yes,status=yes")
-  #   if params.provider is 'vk'
-  #     newWin = window.open("http://vk.com/share.php?url="+url,"share","width=650,height=420,resizable=yes,scrollbars=yes,status=yes")
-  #   if params.provider is 'tw'
-  #     text = 'Создай свой дизайн флакона из Instagram-фотографий '
-  #     text = params.text if params.text
-  #     newWin = window.open("https://twitter.com/intent/tweet?text="+text+url,"share","width=650,height=420,resizable=yes,scrollbars=yes,status=yes")
-  #   newWin.focus()
+  shareController = (params, targetElement) ->
+    url = 'http://www.piter-flanders.ru'
+    url = params.url if params.url
+    if params.provider is 'fb'
+      newWin = window.open("https://www.facebook.com/sharer/sharer.php?u="+url,"share","width=555,height=420,resizable=yes,scrollbars=yes,status=yes")
+    if params.provider is 'vk'
+      newWin = window.open("http://vk.com/share.php?url="+url,"share","width=650,height=420,resizable=yes,scrollbars=yes,status=yes")
+    # if params.provider is 'tw'
+    #   text = 'Создай свой дизайн флакона из Instagram-фотографий '
+    #   text = params.text if params.text
+    #   newWin = window.open("https://twitter.com/intent/tweet?text="+text+url,"share","width=650,height=420,resizable=yes,scrollbars=yes,status=yes")
+    newWin.focus()
 
 
   @init = (config) ->
@@ -58,7 +58,7 @@ class Navigation
     ee.addListener('app_NavScreenCtrl', screenController)
     ee.addListener('ui_NavPopupCtrl', popupContoller)
     ee.addListener('app_NavPopupCtrl', popupContoller)
-    # ee.addListener('ui_NavShareCtrl', shareController)
+    ee.addListener('ui_NavShareCtrl', shareController)
 
     goScreen(undefined, currentScreen)
 
