@@ -82,6 +82,27 @@ html, body {
 
 .clearfix {clear:both;}
 
+.share-board {
+  position: absolute;
+  top:40px;
+  left:10px;
+  .like-container {overflow:hidden; width:78px; height:21px;}
+  .like-button  {
+    // display: inline-block; 
+    display: block;
+    height:26px; 
+    line-height: 26px; 
+    margin: 0 3px 5px;
+    vertical-align: top;
+  }
+  .like-fb { 
+    width: 150px; padding-right: 0px;
+    .like-container {width:140px;}
+  }
+  .fb-like {    top: -5px}
+  .like-tw a {font-size:0;}
+}
+
 .logo {
   display: block;
   position: fixed;
