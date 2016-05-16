@@ -265,8 +265,9 @@ html, body {
 @media only screen and (max-height: 550px) {
   .main-copy_2 {font-size: 14px; line-height: 17px;}
   .main-scrollwheel {margin: 5px auto 0;}
+  .screen_rating .rating-container {padding-top: 5px;}
   .screen_rating .rating-item .name {font: 15px/20px $font; }
-  .screen_rating .rating-item {font: 23px/34px $font;}
+  .screen_rating .rating-item {font: 23px/28px $font;}
   .screen_rating .rating-item .score {font: 22px/25px $font;}
 }
 
