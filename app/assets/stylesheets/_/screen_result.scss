@@ -6,7 +6,7 @@
   color:#fff;
   .rating-container {
     padding-top: 30px;
-    width: 664px; margin: 0 auto;
+    width: 745px; margin: 0 auto;
   }
   ol {width: 332px; float:left; display: block;}
   ol.left {}
@@ -16,7 +16,7 @@
     color:$yellow;
     font:26px/40px $font;
     vertical-align: bottom;
-    .score {color:#fff; font:26px/30px $font;  display: inline-block; min-width: 50px;}
+    .score {color:#fff; font:26px/30px $font;  display: inline-block; min-width: 80px;}
     .name {color:#fff; font:18px/30px $font;}
   }
   .player-left {
