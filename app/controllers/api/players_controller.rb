@@ -32,8 +32,16 @@ class Api::PlayersController < Api::BaseController
   def show
     id = params[:id]
     player =  Player.where(uid: params[:id])[0]
-    place =  Player.all.where(banned: false).order(score: :desc).index(player) + 1
-    render_json({score: player.score, picture: player.picture, name: player.name, place: place})
+    if player
+      if player.banned
+        render_json({score: 0, name:'Участник дисквалифицирован за нарушение правил конкурса', picture: player.picture, place:0})
+      else
+        place =  Player.all.where(banned: false).order(score: :desc).index(player) + 1
+        render_json({score: player.score, picture: player.picture, name: player.name, place: place})
+      end
+    else
+      render_json(status: 422)
+    end  
   end
 
   def extract_uid
