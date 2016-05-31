@@ -16,7 +16,7 @@ class Api::PlayersController < Api::BaseController
   end
 
   def index
-    render_players Player.all
+    render_players Player.all.where(banned: false)
   end
 
   def render_players(scope)

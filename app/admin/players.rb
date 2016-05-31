@@ -1,7 +1,8 @@
 ActiveAdmin.register Player do
   config.sort_order = "name_asc"
   config.filters = false
-  actions :all, except: [ :new, :create, :edit ]
+  config.batch_actions = true
+  actions :all, except: [ :new, :create ]
   menu label: "Участники"
 
   index do
@@ -12,6 +13,7 @@ ActiveAdmin.register Player do
         PlayerDecorator.new(model).send(name)
       end
     end
+    actions
   end
 
 

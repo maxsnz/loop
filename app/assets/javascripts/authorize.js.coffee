@@ -62,7 +62,7 @@ class Authorize
         if user.email?
           _user.email = user.email
         deferred.resolve _user
-        console.log user, _user
+        # console.log user, _user
         return
 
     return deferred.promise()
